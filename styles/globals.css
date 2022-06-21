@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.setup ::placeholder , .form ::placeholder{ 
+color: white;
+}
+
+.form-control{
+    @apply w-full border-b border-white rounded  bg-transparent outline-none focus:bg-white focus:text-orange-400  hover:text-orange-500 transition ease-in-out delay-150 px-8 py-2 rounded;
+}

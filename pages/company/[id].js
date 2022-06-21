@@ -2,6 +2,7 @@ import { getCompanyJobs } from "lib/data";
 import { getCompany } from "lib/data";
 import prisma from "lib/prisma";
 import Link from "next/link";
+import Jobs from "pages/components/jobs";
 
 
 export default function Company({ jobs, company }) {
@@ -16,37 +17,30 @@ export default function Company({ jobs, company }) {
       </div>
       <div className="bg-red-400 shadow text-center p-6">
         <a href="" className="bg-white py-2 px-6 text-center font-bold rounded">
-          {company.name}
+        profile of  {company.name} {jobs.description}
         </a>
       </div>
 
-      <div className="text-white">
-          <div className="card  shadow-xl px-8 py-4">
-              <div className="title">
-                  <Link href= {`/job/${jobs.id}`}>
-                  <a className="font-bold"> {jobs.title}</a>
-                  </Link>
-              </div>
-              <div className="desc ">
-                  <p className="text-clip font-thin"> {jobs.description}</p>
-              </div>
-          </div>
-        </div>
-
+      {
+        jobs.map((job , index) =>{ 
+          <Jobs job={job} key={index} />
+        })
+      }
 
     </div>
   );
 }
 
 export async function getServerSideProps({ params }) {
-  let company = await getCompany(params.id, prisma);
-  company = JSON.parse(JSON.stringify(company));
-  let jobs = await getCompanyJobs(params.id, prisma);
-  jobs = JSON.parse(JSON.stringify(jobs));
+	let company = await getCompany(params.id, prisma)
+  let jobs = await getCompanyJobs(params.id, prisma)
+  company = JSON.parse(JSON.stringify(company))
+  jobs = JSON.parse(JSON.stringify(jobs))
+
   return {
     props: {
-      company,
       jobs,
+      company,
     },
-  };
+  }
 }
