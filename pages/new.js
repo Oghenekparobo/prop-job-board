@@ -1,12 +1,12 @@
 import { useState } from "react";
-// import {  useRouter } from "next/router";
+import {  useRouter } from "next/router";
 
 const New = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [salary, setSalary] = useState("");
   const [location, setLocation] = useState("");
-//   const router = useRouter();
+  const router = useRouter();
   return (
     <div className="bg-orange-400 flex justify-center items-center h-screen">
       <div className="wrapper text-white">
@@ -30,7 +30,7 @@ const New = () => {
               },
               method: "POST",
             });
-            // router.push("dashboard");
+            router.push("dashboard");
           }}
         >
           <div className="title pb-4 pt-20">

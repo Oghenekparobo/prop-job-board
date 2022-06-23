@@ -63,7 +63,7 @@ const Setup = () => {
               />
               <input
                 type="submit"
-                className="pl-6 hover:bg-white hover:text-orange-500 transition ease-in-out delay-150 hover:px-8 hover:py-2 rounded"
+                className="pl-6 bg-white text-orange-500 transition ease-in-out delay-150 px-8 py-2 rounded"
                 value="Add"
               />
             </div>

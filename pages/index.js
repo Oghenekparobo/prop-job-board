@@ -19,7 +19,7 @@ export default function Home({ jobs, user }) {
   }
 
   return (
-    <div className="p-10 h-screen bg-gray-100">
+    <div className="p-10 h-full bg-gray-100">
       {!session ? (
         <div className="flex justify-end p-2">
           <a
@@ -42,10 +42,10 @@ export default function Home({ jobs, user }) {
 
       {session && (
         <>
-          <p className="mb-10 text-2xl font-normal">
+          <p className="mb-10 text-2xl font-bold tracking-wide text-orange-400">
             Welcome, {user.name}
             {user.company && (
-              <span className="bg-black text-white uppercase text-sm p-2">
+              <span className="bg-black text-white uppercase text-sm ml-4 pl-2">
                 Company
               </span>
             )}
@@ -54,11 +54,13 @@ export default function Home({ jobs, user }) {
             <>
               <div className="p-6">
                 <Link href={`/new`}>
-                  <button className="border px-8 py-2 mt-5 font-bold rounded-full bg-black text-white border-black ">
+                  <button className="border px-8 py-2 mt-5 font-bold rounded-full bg-orange-400 outline-none text-white shadow ">
                     click here to post a new job
                   </button>
                 </Link>
-                <button className="ml-5 border px-8 py-2 mt-5 font-bold rounded-full bg-black text-white border-black ">
+
+                <Link href={`/dashboard`}></Link>
+                <button className="ml-5 border px-8 py-2 mt-5 font-bold rounded-full bg-orange-400 outline-none text-white shadow ">
                   see all the jobs you posted
                 </button>
               </div>
@@ -66,9 +68,11 @@ export default function Home({ jobs, user }) {
           ) : (
             <>
               <div className="p-6">
-                <button className=" border px-8 py-2 mt-5 font-bold rounded-full bg-black text-white border-black ">
-                  see all the jobs you applied to
-                </button>
+               
+                  <button className=" border px-8 py-2 mt-5 font-bold rounded-full bg-black text-white border-black ">
+                    see all the jobs you applied to
+                  </button>
+                
               </div>
             </>
           )}
